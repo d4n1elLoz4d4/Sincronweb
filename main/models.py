@@ -17,3 +17,10 @@ class subcategoria(models.Model):
     subcategoriaDescripcion = models.CharField(max_length= 45,verbose_name='Descripción')
     subcategoriaActivo = models.CharField(max_length= 1,verbose_name='Estado') 
     Categoria_idCategoria = models.IntegerField(verbose_name='Categoria')
+
+class servicioOfrecido(models.Model):
+    idServicioOfrecido = models.AutoField(primary_key=True)
+    servicioOfrecidoNombre = models.CharField(max_length= 45,verbose_name='Nombre')
+    servicioOfrecidoDesripcion = models.CharField(max_length= 125,verbose_name='Descripción')
+    servicioOfrecidoActivo = models.CharField(max_length= 1,verbose_name='Estado') 
+  
