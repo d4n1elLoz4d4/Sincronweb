@@ -5,3 +5,15 @@ class estadogestion(models.Model):
     estadoGestionNombre = models.CharField(max_length= 45,verbose_name='Nombre')
     estadoGestionDescripcion = models.CharField(max_length= 125,verbose_name='Descripción')
     estadoGestionActivo = models.CharField(max_length= 1,verbose_name='Estado')
+
+class categoria(models.Model):
+    idCategoria = models.AutoField(primary_key=True)
+    categoriaDescripcion = models.CharField(max_length= 45,verbose_name='Descripción')
+    categoriaActivo = models.CharField(max_length= 1,verbose_name='Estado')
+
+
+class subcategoria(models.Model):
+    idSubcategoria = models.AutoField(primary_key=True)
+    subcategoriaDescripcion = models.CharField(max_length= 45,verbose_name='Descripción')
+    subcategoriaActivo = models.CharField(max_length= 1,verbose_name='Estado') 
+    Categoria_idCategoria = models.IntegerField(verbose_name='Categoria')
