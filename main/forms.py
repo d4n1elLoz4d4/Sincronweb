@@ -1,5 +1,5 @@
 from django import forms
-from .models import categoria, estadogestion, subcategoria
+from .models import categoria, estadogestion, subcategoria, servicioOfrecido
 
 class EstadoGestionForms(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class subcategoriaForms(forms.ModelForm):
     class Meta:
         model = subcategoria
         fields='__all__'            
+
+class servicioOfrecidoForms(forms.ModelForm):
+    class Meta:
+        model = servicioOfrecido
+        fields='__all__'                    

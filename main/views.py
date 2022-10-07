@@ -1,7 +1,7 @@
 from http.client import HTTPResponse
 from django.shortcuts import render,redirect
-from .models import categoria, estadogestion, subcategoria
-from .forms import EstadoGestionForms, categoriaForms, subcategoriaForms
+from .models import categoria, estadogestion, subcategoria, servicioOfrecido
+from .forms import EstadoGestionForms, categoriaForms, subcategoriaForms, servicioOfrecidoForms
 
 def inicio(request):
     titulo='inicio'
@@ -103,3 +103,35 @@ def crearsubcategoria(request):
         return redirect('subcategoria')
     return render(request,'generico/nuevo.html',{'formulario':formulario,'titulo':'Crear SubCategoría'})
 
+
+#vista servicioOfrecido
+
+def servicioOfrecidoview(request):
+    titulo='servicioOfrecido'
+    context={
+        'titutlo':titulo,
+    }
+    lista = servicioOfrecido.objects.all()
+    print(lista)
+    return render(request,'servicioOfrecido/servicioOfrecido.html',{'ListaservicioOfrecido':lista})
+
+
+def editarservicioOfrecido(request, id):
+    item= servicioOfrecido.objects.get(idServicioOfrecido=id)
+    formulario = servicioOfrecidoForms(request.POST or None, instance=item)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('servicioOfrecido')
+    return render(request,'generico/editar.html',{'formulario':formulario, 'titulo':'Editar servicioOfrecido'})
+
+def eliminarservicioOfrecido(request, id):
+    item = servicioOfrecido.objects.get(idServicioOfrecido = id)
+    item.delete()
+    return redirect('servicioOfrecido')
+
+def crearservicioOfrecido(request):
+    formulario = servicioOfrecidoForms(request.POST or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('servicioOfrecido')
+    return render(request,'generico/nuevo.html',{'formulario':formulario,'titulo':'Crear servicioOfrecido'})
