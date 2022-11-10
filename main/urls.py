@@ -22,14 +22,29 @@ urlpatterns = [
     path('subcategoria/editar/<int:id>',views.editarsubCategoria,name='editarsubCategoria'),
     path('eliminarsubCategoria/<int:id>',views.eliminarsubCategoria,name='eliminarsubCategoria'),
 
+    #usuario
+    path('usuario/',views.usuarioview,name='usuario'),
+    path('usuario/nuevo',views.crearusuario,name='creausuario'),
+    path('usuario/editar/<int:id>',views.editarusuario,name='editarusuario'),
+    path('eliminarusuario/<int:id>',views.eliminarusuario,name='eliminarusuario'),
+
     #ServicioOfrecido
-    path('servicioOfrecido/',views.servicioOfrecidoview,name='servicioOfrecido'),
-    path('servicioOfrecido/nuevo',views.crearservicioOfrecido,name='creaservicioOfrecido'),
-    path('servicioOfrecido/editar/<int:id>',views.editarservicioOfrecido,name='editarservicioOfrecido'),
-    path('eliminarservicioOfrecido/<int:id>',views.eliminarservicioOfrecido,name='eliminarservicioOfrecido')
+    path('ServicioOfrecido/',views.ServicioOfrecidoview,name='ServicioOfrecido'),
+    path('ServicioOfrecido/nuevo',views.crearServicioOfrecido,name='creaServicioOfrecido'),
+    path('ServicioOfrecido/editar/<int:id>',views.editarServicioOfrecido,name='editarServicioOfrecido'),
+    path('eliminarServicioOfrecido/<int:id>',views.eliminarServicioOfrecido,name='eliminarServicioOfrecido'),
 
+    #GestionCliente
+    path('GestionCliente/',views.GestionClienteview,name='GestionCliente'),
+    path('GestionCliente/nuevo',views.crearGestionCliente,name='creaGestionCliente'),
+    path('GestionCliente/editar/<int:id>',views.editarGestionCliente,name='editarGestionCliente'),
+    path('eliminarGestionCliente/<int:id>',views.eliminarGestionCliente,name='eliminarGestionCliente'),
     
-
+    #Auditoria
+    path('Auditoria/',views.Auditoriaview,name='Auditoria'),
+    path('Auditoria/nuevo',views.crearAuditoria,name='creaAuditoria'),
+    path('Auditoria/editar/<int:id>',views.editarAuditoria,name='editarAuditoria'),
+    path('eliminarAuditoria/<int:id>',views.eliminarAuditoria,name='eliminarAuditoria'),
 
 
 
