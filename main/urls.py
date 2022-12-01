@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('',views.inicio,name='inicio'),
+    path('',views.inicio,name='inicio'),
 
     #Gestión
     path('gestion/',views.estadogestionview,name='estadogestion'),
