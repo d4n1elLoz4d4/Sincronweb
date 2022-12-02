@@ -4,6 +4,12 @@ from .models import categoria, estadogestion, subcategoria, usuario, ServicioOfr
 from .forms import EstadoGestionForms, categoriaForms, subcategoriaForms, usuarioForms, ServicioOfrecidoForms, GestionClienteForms, AuditoriaForms
 
 def inicio(request):
+    
+    context={
+    }
+    return render(request,'login.html',context)
+
+def inicio(request):
     titulo='inicio'
     context={
         'titutlo':titulo,
@@ -239,3 +245,4 @@ def eliminarAuditoria(request, id):
     item = Auditoria.objects.get(idAuditoria = id)
     item.delete()
     return redirect('Auditoria')
+    
