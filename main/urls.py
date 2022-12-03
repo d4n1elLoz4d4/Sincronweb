@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
-    path('',views.inicio,name='inicio'),
-    path('',views.inicio,name='inicio'),
+    path('',auth_views.LoginView.as_view(),name='inicio'),
+
 
     #Gestión
     path('gestion/',views.estadogestionview,name='estadogestion'),
@@ -46,6 +46,7 @@ urlpatterns = [
     path('Auditoria/nuevo',views.crearAuditoria,name='creaAuditoria'),
     path('Auditoria/editar/<int:id>',views.editarAuditoria,name='editarAuditoria'),
     path('eliminarAuditoria/<int:id>',views.eliminarAuditoria,name='eliminarAuditoria'),
+
 
 
 
