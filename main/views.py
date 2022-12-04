@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from django.shortcuts import render,redirect
 from .models import categoria, estadogestion, subcategoria, usuario, ServicioOfrecido, GestionCliente, Auditoria
 from .forms import EstadoGestionForms, categoriaForms, subcategoriaForms, usuarioForms, ServicioOfrecidoForms, GestionClienteForms, AuditoriaForms
-
+from django.contrib.auth.hashers import make_password
 def inicio(request):
     
     context={
@@ -143,8 +143,19 @@ def eliminarusuario(request, id):
 
 def crearusuario(request):
     lista = usuario.objects.all()
-    formulario = usuarioForms(request.POST or None)
+    formulario = usuarioForms(request.POST, request.FILES or None)
     if formulario.is_valid():
+        if User.objects.filter(username=request.POST['formulario']):
+             user = User.objects.create_user('nombre','email@email','pass')
+                user.username= request.POST['formulario']
+                user.first_name= request.POST['nombres']
+                user.last_name= request.POST['apellidos']
+                user.email= request.POST['email']
+                user.password="@" + request.POST['formulario']
+                user.save()
+                else
+                user.User.objects.get(username=request.POST['formulario'])
+                usuario=Usuario.objects.create
         formulario.save()
         return redirect('usuario')
     return render(request,'generico/nuevo.html',{'formulario':formulario,'titulo':'Crear usuario','ListaEstados':lista, 'pagina':'usuario'})
@@ -246,3 +257,13 @@ def eliminarAuditoria(request, id):
     item.delete()
     return redirect('Auditoria')
     
+def loggedIn(request):
+     if request.user.is_authenticated:
+         respuesta:"Ingresado como "+ request.user.username
+     else:
+         respuesta:"No estas autenticado."
+     return HttpResponse(respuesta)
+
+def logout_user(request):
+
+    return redirect('registration/login.html')
