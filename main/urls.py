@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
-urlpatterns = [
-    path('',auth_views.LoginView.as_view(),name='inicio'),
+from django.contrib import admin
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('adm/',views.GestionClienteview,name='inicio-admin'),
+    path('',auth_views.LoginView.as_view(),name='inicio'),
 
     #Gestión
     path('gestion/',views.estadogestionview,name='estadogestion'),
@@ -28,6 +31,7 @@ urlpatterns = [
     path('usuario/nuevo',views.crearusuario,name='creausuario'),
     path('usuario/editar/<int:id>',views.editarusuario,name='editarusuario'),
     path('eliminarusuario/<int:id>',views.eliminarusuario,name='eliminarusuario'),
+    path('usuarios/',include ('usuarios.urls')),
 
     #ServicioOfrecido
     path('ServicioOfrecido/',views.ServicioOfrecidoview,name='ServicioOfrecido'),

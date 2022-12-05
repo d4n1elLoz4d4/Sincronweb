@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class estadogestion(models.Model):
     idEstadoGestion = models.AutoField(primary_key=True)
@@ -28,6 +29,7 @@ class usuario(models.Model):
     usuarioCorreo = models.CharField(max_length= 65,verbose_name='Correo', blank=False, null=False)
     usuarioRol = models.CharField(max_length= 45,verbose_name='Rol usuario')
     usuarioActivo = models.CharField(max_length= 1,verbose_name='Estado', blank=True, null=False)
+    email= models.EmailField(max_length=150, verbose_name='Correo', default='-')
     
 class ServicioOfrecido(models.Model):
     idServicioOfrecido = models.AutoField(primary_key=True)
