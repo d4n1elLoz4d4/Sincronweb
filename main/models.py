@@ -6,7 +6,6 @@ class estadogestion(models.Model):
     estadoGestionNombre = models.CharField(max_length= 45,verbose_name='Nombre')
     estadoGestionDescripcion = models.CharField(max_length= 125,verbose_name='Descripción')
     estadoGestionActivo = models.CharField(max_length= 1,verbose_name='Estado')
-    user=models.ForeignKey(User, on_delete= models.CASCADE)
 
 class categoria(models.Model):
     idCategoria = models.AutoField(primary_key=True)
@@ -30,7 +29,7 @@ class usuario(models.Model):
     usuarioCorreo = models.CharField(max_length= 65,verbose_name='Correo', blank=False, null=False)
     usuarioRol = models.CharField(max_length= 45,verbose_name='Rol usuario')
     usuarioActivo = models.CharField(max_length= 1,verbose_name='Estado', blank=True, null=False)
-    email= models.EmailField(max_length=150, verbose_name='Correo')
+    email= models.EmailField(max_length=150, verbose_name='Correo', default='-')
     
 class ServicioOfrecido(models.Model):
     idServicioOfrecido = models.AutoField(primary_key=True)

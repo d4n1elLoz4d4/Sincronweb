@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from usuarios.forms import UsuarioForm
-from usuarios.models import Usuario
+from usuarios.models import UsuarioLogin
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required

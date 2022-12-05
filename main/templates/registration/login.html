@@ -9,7 +9,36 @@
 
 {#carga mensajes#}
 {% bootstrap_messages %}
-<!DOCTYPE html>
+
+<main class="form-signin w-100 m-auto" style="max-width: 330px">
+    <form method="Post">
+        {% csrf_token %}
+        <img class="mb-4" src="{% static 'img/LogoHorizontal.webp' %}" alt="" >
+        <br/>
+        <h1 class="h3 mb-3 fw-normal">Inicio de Sesion</h1>
+
+        <div class="input-group mb-3">
+            {{form.username}}
+        </div>
+        <div class="input-group mb-3">
+            {{form.password}}
+        </div>
+
+        <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Recordar Contraseña
+        </label>
+        </div>
+
+        <input type="submit" class="w-100 btn btn-lg btn-primary" value="Ingresar">
+  
+        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
+    </form>
+</main>
+
+{% include 'partials/js.html' %}
+
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +55,7 @@
 
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index.html" class="h1"><b>Sincron Usuario</a>
+                <a href="../../index.html" class="h1"><b>Sincron Usuariooddo</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Bienvenido al Sistema</p>
@@ -81,11 +110,11 @@
     </div>
 
 
-    <!--<script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
 
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>-->
+    <script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
 
 
     <div style="position: static !important;">
@@ -93,4 +122,4 @@
             style="position: absolute !important; top: 0px !important; left: 0px !important;"></div>
     </div>
     {% include 'partials/js.html' %}
-</body>
+</body>-->

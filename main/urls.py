@@ -1,10 +1,12 @@
 from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+from django.contrib import admin
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('adm/',views.GestionClienteview,name='inicio-admin'),
     path('',auth_views.LoginView.as_view(),name='inicio'),
-
 
     #Gestión
     path('gestion/',views.estadogestionview,name='estadogestion'),

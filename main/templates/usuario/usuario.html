@@ -22,23 +22,23 @@
             <th>Apellido</th>
             <th>Tipo de Documento</th>
             <th>Numero Documento</th>
-            <th>Coreo Electronico</th>
+            <th>Correo Electronico</th>
             <th>Descripción</th>
             <th>Activo?</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {% for item in Listausuario %}                     
+          {% for usuario in usuarios %}                     
             <tr>
-              <td>{{item.idUsuario}}</td>
-              <td>{{item.usuarioNombre}}</td>
-              <td>{{item.usuarioApellido}}</td>
-              <td>{{item.usuarioTipoDocumento}}</td>
-              <td>{{item.usuarioNumeroDocumento}}</td>
-              <td>{{item.usuarioCorreo}}</td>
-              <td>{{item.usuarioRol}}</td>
-              <td>{{item.usuarioActivo}}</td>
+              <td>{{usuario.idUsuario}}</td>
+              <td>{{usuario.usuarioNombre}}</td>
+              <td>{{usuario.usuarioApellido}}</td>
+              <td>{{usuario.usuarioTipoDocumento}}</td>
+              <td>{{usuario.usuarioNumeroDocumento}}</td>
+              <td>{{usuario.usuarioCorreo}}</td>
+              <td>{{usuario.usuarioRol}}</td>
+              <td>{{usuario.usuarioActivo}}</td>
               <td>
 
                   <div class="btn-group">
