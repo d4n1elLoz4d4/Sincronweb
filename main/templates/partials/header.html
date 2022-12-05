@@ -6,6 +6,7 @@
             <img class="bi me-2" width="250" height="70" role="img" src="{% static 'img/LogoHorizontal.webp' %}" alt="logo sincron.co"></a>        
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="{% url 'GestionCliente' %}" class="nav-link px-2 link-dark">Gestión</a></li>
+            <li><a href="{% url 'Auditoria' %}" class="nav-link px-2 link-dark">Auditoría</a></li>
             <li><a href="#" class="nav-link px-2 link-dark d-block link-dark text-decoration-none "  data-bs-toggle="dropdown" aria-expanded="false"> Configuración</a>
                 <ul class="dropdown-menu text-small ">
                     <li><a class="nav-link px-2 link-dark" href="{% url 'usuario' %}">Usuario</a></li>
@@ -15,7 +16,7 @@
                     <li><a class="nav-link px-2 link-dark" href="{% url 'ServicioOfrecido' %}">Servicio Ofrecido</a></li>
                 </ul> 
             </li>
-            <li><a href="{% url 'Auditoria' %}" class="nav-link px-2 link-dark">Auditoría</a></li>
+            
 
         
         </ul>
