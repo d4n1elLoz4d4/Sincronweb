@@ -4,7 +4,7 @@
 <!-- Cuerpo de la tabla"> -->
 <div class="card">
   <div class="card-header">
-    <a name="" id="" class="btn btn-success" href="{% url 'creausuario' %}" role="button">Agregar Usuario</a>
+    <a name="" id="" class="btn btn-primary" href="{% url 'creausuario' %}" role="button">Agregar Usuario</a>
 
   </div>
   <div class="card-body">
@@ -24,26 +24,26 @@
             <th>Numero Documento</th>
             <th>Correo Electronico</th>
             <th>Descripción</th>
-            <th>Activo</th>
+            <th>Activo?</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {% for item in Listausuario %}                     
+          {% for usuario in usuarios %}                     
             <tr>
-              <td>{{item.idUsuario}}</td>
-              <td>{{item.usuarioNombre}}</td>
-              <td>{{item.usuarioApellido}}</td>
-              <td>{{item.usuarioTipoDocumento}}</td>
-              <td>{{item.usuarioNumeroDocumento}}</td>
-              <td>{{item.usuarioCorreo}}</td>
-              <td>{{item.usuarioRol}}</td>
-              <td>{{item.usuarioActivo}}</td>
+              <td>{{usuario.idUsuario}}</td>
+              <td>{{usuario.usuarioNombre}}</td>
+              <td>{{usuario.usuarioApellido}}</td>
+              <td>{{usuario.usuarioTipoDocumento}}</td>
+              <td>{{usuario.usuarioNumeroDocumento}}</td>
+              <td>{{usuario.usuarioCorreo}}</td>
+              <td>{{usuario.usuarioRol}}</td>
+              <td>{{usuario.usuarioActivo}}</td>
               <td>
 
                   <div class="btn-group">
                       
-                      <a name="" id="" class="btn btn-info" href="{% url 'editarusuario' item.idUsuario %}" role="button">Editar</a>
+                      <a name="" id="" class="btn btn-primary" href="{% url 'editarusuario' item.idUsuario %}" role="button">Editar</a>
                       <a name="" id="" class="btn btn-danger" href="{% url 'eliminarusuario' item.idUsuario %}" role="button">Eliminar</a>
                       
                   </div>  

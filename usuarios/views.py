@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from usuarios.forms import UsuarioLoginForm
+from usuarios.forms import UsuarioForm
 from usuarios.models import UsuarioLogin
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -8,17 +8,17 @@ from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def usuarios(request):
-    titulo="usuarios"
-    usuarios= UsuarioLogin.objects.all()
+    titulo="Usuarios"
+    usuarios= usuarios.objects.all()
     context={
         'titulo':titulo,
         'usuarios':usuarios
         }
-    return render(request,'usuarios/UsuarioLogin.html',context)
+    return render(request,'usuarios/usuarios.html',context)
 def usuarios_crear(request):
     titulo="Usuarios - Crear"
     if request.method == "POST":
-        form= UsuarioLoginForm(request.POST, request.FILES)
+        form= UsuarioForm(request.POST, request.FILES)
         if form.is_valid():
             if not User.objects.filter(username=request.POST['documento']):
                 user = User.objects.create_user('nombre','email@email','pass')
@@ -35,7 +35,7 @@ def usuarios_crear(request):
             else:
                 user=User.objects.get(username=request.POST['documento'])
 
-            usuario= UsuarioLogin.objects.create(
+            usuario= Usuario.objects.create(
                 nombres=request.POST['nombres'],
                 apellidos=request.POST['apellidos'],
                 foto=form.cleaned_data.get('foto'),
@@ -49,9 +49,9 @@ def usuarios_crear(request):
             )
             return redirect('usuarios')
         else:
-            form = UsuarioLoginForm(request.POST,request.FILES)
+            form = UsuarioForm(request.POST,request.FILES)
     else:
-        form= UsuarioLoginForm()
+        form= UsuarioForm()
     context={
         'titulo':titulo,
         'form':form
@@ -59,25 +59,25 @@ def usuarios_crear(request):
     return render(request,'partials/crear.html',context)
 
 def usuarios_editar(request, pk):
-    titulo="usuarios - Editar"
-    usuario= UsuarioLogin.objects.get(id=pk)
+    titulo="Usuarios - Editar"
+    usuario= Usuario.objects.get(id=pk)
     if request.method == "POST":
-        form= UsuarioLoginForm(request.POST, instance=usuario)
+        form= UsuarioForm(request.POST, instance=usuario)
         if form.is_valid():
             form.save()
             return redirect('usuarios')
         else:
             print("Error al guardar")
     else:
-        form= UsuarioLoginForm(instance=usuario)
+        form= UsuarioForm(instance=usuario)
     context={
         'titulo':titulo,
         'form':form
     }
     return render(request,'partials/crear.html',context)
 def usuarios_eliminar(request, pk):
-    titulo="usuarios - Eliminar"
-    usuarios= UsuarioLogin.objects.all()
+    titulo="Usuarios - Eliminar"
+    usuarios= Usuario.objects.all()
 
     Usuario.objects.filter(id=pk).update(
             estado='0'
@@ -90,16 +90,4 @@ def usuarios_eliminar(request, pk):
         'titulo':titulo,
      
     }
-    return render(request,'usuarios/UsuarioLogin.html',context)    
-
-
-    def loggedIn(request):
-     if request.user.is_authenticated:
-         respuesta:"Ingresado como "+ request.user.username
-     else:
-         respuesta:"No estas autenticado."
-     return HttpResponse(respuesta)
-
-def logout_user(request):
-
-    return redirect('registration/login.html')
+    return render(request,'usuarios/usuarios.html',context)    
